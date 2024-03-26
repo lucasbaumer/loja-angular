@@ -21,7 +21,7 @@
 
 <div class="mb-3">
   <label for="CPF">CPF: </label>
-  <input type="number" class="form-control" id="CPF" placeholder="Digite seu CPF"
+  <input type="text" class="form-control" id="CPF" placeholder="XXX.XXX.XXX-XX"
   formControlName="CPF">
   <div class="invalid-feedback"
     [style.display]="formGroup.controls.email.invalid  && formGroup.controls.email.touched ? 'block' : 'none'">Digite o CPF corretamente:
@@ -58,7 +58,7 @@
 <div class="mb-3">
   <label for="sexo">Sexo:</label>
   <select class="form-select" aria-label="Default select example" id="sexo" formControlName="sexo">
-    <option selected value="Prefiro não dizer">Prefiro não dizer</option>
+    <option selected value="prefiro nao dizer">Prefiro não dizer</option>
     <option value="Masculino">Masculino</option>
     <option value="Feminino">Feminino</option>
   </select>
