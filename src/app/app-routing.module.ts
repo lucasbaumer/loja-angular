@@ -6,6 +6,8 @@ import { LayoutComponent } from './layout/layout.component';
 import { LoginComponent } from './login/login.component';
 import { ListaUsuarioComponent } from './lista-usuario/lista-usuario.component';
 import { ListaProdutoComponent } from './lista-produto/lista-produto.component';
+import { VendedorComponent } from './vendedor/vendedor.component';
+import { ListaVendedoresComponent } from './lista-vendedores/lista-vendedores.component';
 
 const routes: Routes = [
   {path: 'layout', component: LayoutComponent,
@@ -14,6 +16,8 @@ const routes: Routes = [
        {path: 'lista-usuario', component: ListaUsuarioComponent},
        {path: 'produto', component: ProdutoComponent},
        {path: 'lista-produto', component: ListaProdutoComponent},
+       {path: 'vendedor', component: VendedorComponent},
+       {path: 'lista-vendedores', component: ListaVendedoresComponent},
     ]},
 
   {path: 'login', component: LoginComponent},

@@ -11,6 +11,8 @@ import { LoginComponent } from './login/login.component';
 import { RouterModule } from '@angular/router';
 import { ListaUsuarioComponent } from './lista-usuario/lista-usuario.component';
 import { ListaProdutoComponent } from './lista-produto/lista-produto.component';
+import { VendedorComponent } from './vendedor/vendedor.component';
+import { ListaVendedoresComponent } from './lista-vendedores/lista-vendedores.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { ListaProdutoComponent } from './lista-produto/lista-produto.component';
     LayoutComponent,
     LoginComponent,
     ListaUsuarioComponent,
-    ListaProdutoComponent
+    ListaProdutoComponent,
+    VendedorComponent,
+    ListaVendedoresComponent
   ],
   imports: [
     BrowserModule,

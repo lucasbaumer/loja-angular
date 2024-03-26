@@ -1,4 +1,4 @@
-<h5>CADASTRO DE COMPRADOR:</h5>
+<h5>CADASTRO DE FUNCIONÁRIOS:</h5>
 
 <form [formGroup]="formGroup">
 <div class="mb-3">
@@ -29,8 +29,17 @@
 </div>
 
 <div class="mb-3">
+  <label for="setor">Setor: </label>
+  <select class="form-select" aria-label="Default select example" id="setor" formControlName="setor">
+    <option selected value="vendedor">Vendedor</option>
+    <option value="caixa">Caixa</option>
+    <option value="repositor">Repositor</option>
+  </select>
+</div>
+
+<div class="mb-3">
   <label for="senha">Senha: </label>
-  <input type="text" class="form-control" id="senha" placeholder="Digite sua senha de cadastro"
+  <input type="text" class="form-control" id="senha" placeholder="Digite sua senha de Vendedor"
   formControlName="senha">
   <div class="invalid-feedback"
   [style.display]="formGroup.controls.senha.invalid  && formGroup.controls.senha.touched ? 'block' : 'none'">Digite a senha corretamente:
@@ -61,14 +70,6 @@
   formControlName="dtnasc">
 </div>
 
-<div class="mb-3">
-  <label for="endereco">Endereço: </label>
-  <input type="text" class="form-control" id="email" placeholder="Digite seu Endereço para entrega"
-  formControlName="endereco">
-  <div class="invalid-feedback"
-    [style.display]="formGroup.controls.endereco.invalid  && formGroup.controls.endereco.touched ? 'block' : 'none'">Digite o endereço corretamente:
-  </div>
-</div>
-
 <button (click)="salvar()" class="btn btn-primary">Salvar</button>
 </form>
+
