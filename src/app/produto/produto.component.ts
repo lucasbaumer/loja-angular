@@ -26,8 +26,7 @@ showErrorMessages = false;
 
   salvar(): void{
     console.log('Salvando produto');
-    console.log("nome: " + this.formGroup.controls.nome.invalid);
-    console.log("preço: " + this.formGroup.controls.nome.touched);
+
 
   console.log("nome: " + this.formGroup.controls.nome.value);
   console.log("nome: " + this.formGroup.controls.preco.value);
@@ -37,11 +36,14 @@ showErrorMessages = false;
     console.log('Formulário Inválido');
     this.formGroup.markAllAsTouched();
     this.showErrorMessages = true;
+    this.showSuccessMessages = false;
     return;
   }
 
   console.log("formulário Válido");
   this.showSuccessMessages = true;
+  this.showErrorMessages = false;
+
 
 }
 }
