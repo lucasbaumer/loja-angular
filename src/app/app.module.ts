@@ -13,6 +13,7 @@ import { ListaUsuarioComponent } from './lista-usuario/lista-usuario.component';
 import { ListaProdutoComponent } from './lista-produto/lista-produto.component';
 import { VendedorComponent } from './vendedor/vendedor.component';
 import { ListaVendedoresComponent } from './lista-vendedores/lista-vendedores.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ListaVendedoresComponent } from './lista-vendedores/lista-vendedores.co
     ListaUsuarioComponent,
     ListaProdutoComponent,
     VendedorComponent,
-    ListaVendedoresComponent
+    ListaVendedoresComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

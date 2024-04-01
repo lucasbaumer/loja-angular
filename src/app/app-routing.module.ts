@@ -8,20 +8,34 @@ import { ListaUsuarioComponent } from './lista-usuario/lista-usuario.component';
 import { ListaProdutoComponent } from './lista-produto/lista-produto.component';
 import { VendedorComponent } from './vendedor/vendedor.component';
 import { ListaVendedoresComponent } from './lista-vendedores/lista-vendedores.component';
+import { HomeComponent } from './home/home.component';
+
+// const routes: Routes = [
+//   {path: 'layout', component: LayoutComponent,
+//     children:  [
+//        {path: 'home', component: HomeComponent},
+//        {path: 'usuario', component: UsuarioComponent},
+//        {path: 'lista-usuario', component: ListaUsuarioComponent},
+//        {path: 'produto', component: ProdutoComponent},
+//        {path: 'lista-produto', component: ListaProdutoComponent},
+//        {path: 'vendedor', component: VendedorComponent},
+//        {path: 'lista-vendedores', component: ListaVendedoresComponent},
+//     ]},
+
+//   {path: 'login', component: LoginComponent},
+// ];
 
 const routes: Routes = [
-  {path: 'layout', component: LayoutComponent,
-    children:  [
+       {path: 'home', component: HomeComponent},
        {path: 'usuario', component: UsuarioComponent},
        {path: 'lista-usuario', component: ListaUsuarioComponent},
        {path: 'produto', component: ProdutoComponent},
        {path: 'lista-produto', component: ListaProdutoComponent},
        {path: 'vendedor', component: VendedorComponent},
        {path: 'lista-vendedores', component: ListaVendedoresComponent},
-    ]},
-
-  {path: 'login', component: LoginComponent},
+       {path: 'login', component: LoginComponent},
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
