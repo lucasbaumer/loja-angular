@@ -1,77 +1,79 @@
 <app-layout></app-layout>
 
-<h5>CADASTRO DE FUNCIONÁRIOS:</h5>
+<div class="container">
+  <h5>CADASTRO DE FUNCIONÁRIOS:</h5>
 
-<form [formGroup]="formGroup">
-<div class="mb-3">
-  <label for="nome">Nome: </label>
-  <input type="text" class="form-control" id="nome" placeholder="Digite seu Nome"
-  formControlName="nome">
-  <div class="invalid-feedback"
-    [style.display]="formGroup.controls.nome.invalid  && formGroup.controls.nome.touched ? 'block' : 'none'">Digite o nome corretamente:
+  <form [formGroup]="formGroup">
+  <div class="mb-3">
+    <label for="nome">Nome: </label>
+    <input type="text" class="form-control" id="nome" placeholder="Digite seu Nome"
+    formControlName="nome">
+    <div class="invalid-feedback"
+      [style.display]="formGroup.controls.nome.invalid  && formGroup.controls.nome.touched ? 'block' : 'none'">Digite o nome corretamente:
+    </div>
   </div>
-</div>
 
-<div class="mb-3">
-  <label for="email">Email: </label>
-  <input type="text" class="form-control" id="email" placeholder="Digite seu Email"
-  formControlName="email">
-  <div class="invalid-feedback"
-    [style.display]="formGroup.controls.email.invalid  && formGroup.controls.email.touched ? 'block' : 'none'">Digite o Email corretamente:
+  <div class="mb-3">
+    <label for="email">Email: </label>
+    <input type="text" class="form-control" id="email" placeholder="Digite seu Email"
+    formControlName="email">
+    <div class="invalid-feedback"
+      [style.display]="formGroup.controls.email.invalid  && formGroup.controls.email.touched ? 'block' : 'none'">Digite o Email corretamente:
+    </div>
   </div>
-</div>
 
-<div class="mb-3">
-  <label for="CPF">CPF: </label>
-  <input type="text" class="form-control" id="CPF" placeholder="000.000.000-00"
-  formControlName="CPF">
-  <div class="invalid-feedback"
-    [style.display]="formGroup.controls.email.invalid  && formGroup.controls.email.touched ? 'block' : 'none'">Digite o CPF corretamente:
+  <div class="mb-3">
+    <label for="CPF">CPF: </label>
+    <input type="text" class="form-control" id="CPF" placeholder="000.000.000-00"
+    formControlName="CPF">
+    <div class="invalid-feedback"
+      [style.display]="formGroup.controls.email.invalid  && formGroup.controls.email.touched ? 'block' : 'none'">Digite o CPF corretamente:
+    </div>
   </div>
-</div>
 
-<div class="mb-3">
-  <label for="setor">Setor: </label>
-  <select class="form-select" aria-label="Default select example" id="setor" formControlName="setor">
-    <option selected value="vendedor">Vendedor</option>
-    <option value="caixa">Caixa</option>
-    <option value="repositor">Repositor</option>
-  </select>
-</div>
+  <div class="mb-3">
+    <label for="setor">Setor: </label>
+    <select class="form-select" aria-label="Default select example" id="setor" formControlName="setor">
+      <option selected value="vendedor">Vendedor</option>
+      <option value="caixa">Caixa</option>
+      <option value="repositor">Repositor</option>
+    </select>
+  </div>
 
-<div class="mb-3">
-  <label for="senha">Senha: </label>
-  <input type="text" class="form-control" id="senha" placeholder="Digite sua senha de Vendedor"
-  formControlName="senha">
-  <div class="invalid-feedback"
-  [style.display]="formGroup.controls.senha.invalid  && formGroup.controls.senha.touched ? 'block' : 'none'">Digite a senha corretamente:
-</div>
-</div>
+  <div class="mb-3">
+    <label for="senha">Senha: </label>
+    <input type="text" class="form-control" id="senha" placeholder="Digite sua senha de Vendedor"
+    formControlName="senha">
+    <div class="invalid-feedback"
+    [style.display]="formGroup.controls.senha.invalid  && formGroup.controls.senha.touched ? 'block' : 'none'">Digite a senha corretamente:
+  </div>
+  </div>
 
-<div class="mb-3">
-  <label for="senha">Reescreva sua senha: </label>
-  <input type="text" class="form-control" id="senha" placeholder="Verifique sua senha"
-  formControlName="senha">
-  <div class="invalid-feedback"
-  [style.display]="formGroup.controls.senha.invalid  && formGroup.controls.senha.touched ? 'block' : 'none'">Digite a senha corretamente:
-</div>
-</div>
+  <div class="mb-3">
+    <label for="senha">Reescreva sua senha: </label>
+    <input type="text" class="form-control" id="senha" placeholder="Verifique sua senha"
+    formControlName="senha">
+    <div class="invalid-feedback"
+    [style.display]="formGroup.controls.senha.invalid  && formGroup.controls.senha.touched ? 'block' : 'none'">Digite a senha corretamente:
+  </div>
+  </div>
 
-<div class="mb-3">
-  <label for="sexo">Sexo:</label>
-  <select class="form-select" aria-label="Default select example" id="sexo" formControlName="sexo">
-    <option selected value="prefiro nao dizer">Prefiro não dizer</option>
-    <option value="Masculino">Masculino</option>
-    <option value="Feminino">Feminino</option>
-  </select>
+  <div class="mb-3">
+    <label for="sexo">Sexo:</label>
+    <select class="form-select" aria-label="Default select example" id="sexo" formControlName="sexo">
+      <option selected value="prefiro nao dizer">Prefiro não dizer</option>
+      <option value="Masculino">Masculino</option>
+      <option value="Feminino">Feminino</option>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label for="dtnasc">Data de nascimento: </label>
+    <input type="date" class="form-control" id="dtnasc"
+    formControlName="dtnasc">
+  </div>
+
+  <button (click)="salvar()" class="btn btn-primary">Salvar</button>
+  </form>
+
 </div>
-
-<div class="mb-3">
-  <label for="dtnasc">Data de nascimento: </label>
-  <input type="date" class="form-control" id="dtnasc"
-  formControlName="dtnasc">
-</div>
-
-<button (click)="salvar()" class="btn btn-primary">Salvar</button>
-</form>
-
