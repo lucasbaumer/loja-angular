@@ -2,3 +2,10 @@
   margin-top: 15px;
 }
 
+#logo {
+  font-weight: bold;
+  font-style: italic;
+}
+#dropdown {
+  font-weight: 600;
+}
