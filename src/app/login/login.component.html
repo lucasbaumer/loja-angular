@@ -1,29 +1,28 @@
-<div class="container d-flex flex-column">
-  <div class="header">
-    <h5 id="logo">BLAZE TÊNIS</h5>
-  </div>
-
-      <h1>Faça Seu Login</h1>
-      <div class="row">
-        <div class="col">
-          <label for="inputPassword6" class="col-form-label">E-Mail</label>
-        </div>
-        <div class="col">
-          <input type="text" id="usuario" class="form-control" aria-describedby="passwordHelpInline">
-        </div>
-        <div class="col">
-          <span id="passwordHelpInline" class="form-text">
-          </span>
-        </div>
-        <div class="col">
-          <label for="inputPassword6" class="col-form-label">Senha</label>
-        </div>
-        <div class="col">
-          <input type="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline" >
-        </div>
-
-            <button type="button" id="btnLogin" class="btn btn-primary btn-sm" (click)="login()">Login</button>
+<div class="container border-0">
+  <div style="margin-left: 70px;" class="row justify-content-center">
+    <h3 class="row justify-content-flexstart" id="logo">BLAZE TÊNIS</h3>
+      <div class="col-md-6">
+          <div class="card border-0">
+              <div class="card-header-no-bg">
+                <h4 class="card-title">Faça Seu Login</h4>
+              </div>
+              <div class="card-body">
+                  <form action="#">
+                    <div class="form-outline mb-4">
+                      <input type="email" id="form2Example1" class="form-control" />
+                      <label class="form-label" for="form2Example1">Email address</label>
+                    </div>
+                    <div class="form-outline mb-4">
+                      <input type="password" id="form2Example2" class="form-control" />
+                      <label class="form-label" for="form2Example2">Password</label>
+                    </div>
+                    <div class="col">
+                      <a href="#!">Forgot password?</a>
+                    </div>
+                      <button type="button" class="btn btn-primary btn-block mb-4">Sign in</button>
+                  </form>
+              </div>
+          </div>
       </div>
   </div>
-
-
+</div>
