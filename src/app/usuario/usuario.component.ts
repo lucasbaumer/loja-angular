@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
+import { CompradorModel } from './model/usuario.model';
+import { UsuarioService } from './service/usuario.service';
 
 
 @Component({
@@ -29,7 +31,7 @@ export class UsuarioComponent {
     [Validators.required, Validators.min(5.1),] ),
   })
 
-   constructor(){ }
+   constructor(private usuarioService: UsuarioService){ }
 
   ngOninit(): void{ //iniciar alguma coisa antes de iniciar
   }
@@ -47,6 +49,22 @@ export class UsuarioComponent {
     console.log("Endereço: " + this.formGroup.controls.endereco.value);
     console.log("Endereço: " + this.formGroup.controls.endereco.touched);
 
+
+    var comprador = new CompradorModel();
+    comprador.nome = this.formGroup.controls.nome.value?.toString();
+    // comprador.cpf = this.formGroup.controls.cpf.value?
+    // comprador.dtNasc = this.formGroup.controls.dtNasc.value?.toDate();
+    comprador.email = this.formGroup.controls.email.value?.toString();
+    comprador.senha = this.formGroup.controls.senha.value?.toString();
+    comprador.endereco = this.formGroup.controls.endereco.value?.toString();
+    // comprador.sexo = this.formGroup.controls.sexo.value?.toString();
+
+    this.usuarioService.salvar(comprador).subscribe(usuario => {
+      console.log('Comprador salvo com sucesso');
+      console.log(usuario)
+    }, error => {
+      console.error(error);
+    });
 
   if(this.formGroup.invalid){
     console.log('Formulário Inválido');

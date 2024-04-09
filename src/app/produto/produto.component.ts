@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ProdutoModel } from './model/produto.model';
+import { ProdutoService } from './service/produto.service';
 
 @Component({
   selector: 'app-produto',
@@ -19,7 +21,7 @@ showErrorMessages = false;
     Validators.pattern('^[0-9]+(\.[0-9]{1,2})?$')]),
   });
 
-  constructor(){ }
+  constructor(private produtoService: ProdutoService){ }
 
   ngOninit(): void{ //iniciar alguma coisa antes de iniciar
   }
@@ -39,6 +41,18 @@ showErrorMessages = false;
     this.showSuccessMessages = false;
     return;
   }
+
+  var produto = new ProdutoModel();
+  produto.nome = this.formGroup.controls.nome.value?.toString();
+  // produto.preco = this.formGroup.controls.preco.value?
+
+  this.produtoService.salvar(produto).subscribe(produto => {
+    console.log('Produto salvo com sucesso');
+    console.log(produto)
+  }, error => {
+    console.error(error);
+  });
+
 
   console.log("formulário Válido");
   this.showSuccessMessages = true;

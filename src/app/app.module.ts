@@ -14,6 +14,7 @@ import { ListaProdutoComponent } from './lista-produto/lista-produto.component';
 import { VendedorComponent } from './vendedor/vendedor.component';
 import { ListaVendedoresComponent } from './lista-vendedores/lista-vendedores.component';
 import { HomeComponent } from './home/home.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { HomeComponent } from './home/home.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule
   ],
   providers: [
     provideClientHydration()
