@@ -57,7 +57,7 @@ export class UsuarioComponent {
     comprador.email = this.formGroup.controls.email.value?.toString();
     comprador.senha = this.formGroup.controls.senha.value?.toString();
     comprador.endereco = this.formGroup.controls.endereco.value?.toString();
-    // comprador.sexo = this.formGroup.controls.sexo.value?.toString();
+    comprador.sexo = this.formGroup.controls.sexo.value?.toString();
 
     this.usuarioService.salvar(comprador).subscribe(usuario => {
       console.log('Comprador salvo com sucesso');

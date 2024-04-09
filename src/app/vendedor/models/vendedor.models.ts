@@ -1,4 +1,4 @@
-export class CompradorModel {
+export class VendedorModel {
 
   nome?: string;
   email?: string;
@@ -6,6 +6,6 @@ export class CompradorModel {
   senha?: string;
   sexo?: string;
   dtNasc?: Date;
-  endereco?: string;
+  setor?: string;
 
 }
