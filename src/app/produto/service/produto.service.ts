@@ -1,22 +1,31 @@
 import { Injectable } from '@angular/core';
 import { ProdutoModel } from '../model/produto.model';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
+import {AngularFireAction, AngularFireDatabase} from '@angular/fire/compat/database';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProdutoService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private db: AngularFireDatabase) { }
 
-  salvar(produto:ProdutoModel):Observable<ProdutoModel>{
-    return this.http.
-    post('https://blazetenis-default-rtdb.firebaseio.com/produto.json', produto);
+  salvar(produto: ProdutoModel) {
+    return this.db.list('produto').push(produto)
   }
 
-  listar(): Observable<ProdutoModel[]> {
-    return this.http.
-    get<ProdutoModel[]>('https://blazetenis-default-rtdb.firebaseio.com/produto.json');
+  excluir(key: any){
+    return this.db.object('produto/' + key).remove();
+
+  }
+
+  listar() {
+    return this.db.list('produto').snapshotChanges()
+    .pipe(
+      map(changes => {
+        return changes.map(c => ({key: c.payload.key, ...c.payload.val() as ProdutoModel}));
+      })
+
+    )
   }
 }

@@ -16,10 +16,15 @@ export class ListaProdutoComponent implements OnInit {
 
   ngOnInit(): void {
     this.produtoService.listar().subscribe(produtos => {
+      console.log(produtos);
       this.produtos = produtos;
-      console.log(this.produtos);
-    }, error => {
-      console.error(error);
+    });
+  }
+
+  excluir(key: any){
+    console.log(key);
+    this.produtoService.excluir(key).then(retorno =>{
+      console.log(retorno);
     });
   }
 }

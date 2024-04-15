@@ -15,6 +15,9 @@ import { VendedorComponent } from './vendedor/vendedor.component';
 import { ListaVendedoresComponent } from './lista-vendedores/lista-vendedores.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from '../environment/environment';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     ReactiveFormsModule,
     RouterModule,
-    HttpClientModule
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule
   ],
   providers: [
     provideClientHydration()

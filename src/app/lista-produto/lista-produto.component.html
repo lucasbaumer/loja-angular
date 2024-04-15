@@ -12,35 +12,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Air jordan x off white - amarelo</td>
-        <td>R$ 3000,00</td>
+      <tr *ngFor="let produto of produtos;">
+        <th scope="row">{{produto.key}}</th>
+        <td>{{produto.nome}}</td>
+        <td>{{produto.preco}}</td>
         <td><button class='btn btn-warning'>Editar</button></td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Air Jordan</td>
-        <td>R$ 699,00</td>
-        <td><button class='btn btn-warning'>Editar</button></td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Nike Dunk low </td>
-        <td>R$ 799,00</td>
-        <td><button class='btn btn-warning'>Editar</button></td>
-      </tr>
-      <tr>
-        <th scope="row">4</th>
-        <td>Air Max 1</td>
-        <td>R$ 1044,99</td>
-        <td><button class='btn btn-warning'>Editar</button></td>
-      </tr>
-      <tr>
-        <th scope="row">5</th>
-        <td>Nike Star Runner 3 infantil</td>
-        <td>R$ 408,49</td>
-        <td><button class='btn btn-warning'>Editar</button></td>
+        <td><button class='btn btn-danger' (click)="excluir(produto.key)">excluir</button></td>
       </tr>
     </tbody>
   </table>

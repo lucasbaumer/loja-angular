@@ -46,18 +46,14 @@ showErrorMessages = false;
   produto.nome = this.formGroup.controls.nome.value?.toString();
   produto.preco = this.formGroup.controls.preco.value?.toString();
 
-  this.produtoService.salvar(produto).subscribe(produto => {
-    console.log('Produto salvo com sucesso');
-    console.log(produto)
-  }, error => {
-    console.error(error);
+  this.produtoService.salvar(produto).then(result => {
+    this.showSuccessMessages = true;
+    console.log(result)
   });
 
 
   console.log("formulário Válido");
   this.showSuccessMessages = true;
   this.showErrorMessages = false;
-
-
 }
 }
