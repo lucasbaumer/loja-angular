@@ -2,10 +2,10 @@ export class VendedorModel {
 
   nome?: string;
   email?: string;
-  cpf?: number;
+  cpf?: string;
   senha?: string;
   sexo?: string;
-  dtNasc?: Date;
+  dtNasc?: string;
   setor?: string;
 
 }

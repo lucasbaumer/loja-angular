@@ -31,7 +31,7 @@ showErrorMessages = false;
 
 
   console.log("nome: " + this.formGroup.controls.nome.value);
-  console.log("nome: " + this.formGroup.controls.preco.value);
+  console.log("preço: " + this.formGroup.controls.preco.value);
 
 
   if(this.formGroup.invalid){
@@ -44,7 +44,7 @@ showErrorMessages = false;
 
   var produto = new ProdutoModel();
   produto.nome = this.formGroup.controls.nome.value?.toString();
-  // produto.preco = this.formGroup.controls.preco.value?
+  produto.preco = this.formGroup.controls.preco.value?.toString();
 
   this.produtoService.salvar(produto).subscribe(produto => {
     console.log('Produto salvo com sucesso');

@@ -20,7 +20,7 @@ export class UsuarioComponent {
     email: new FormControl('',
     [Validators.required]),
     CPF: new FormControl('',
-    [Validators.required]),
+    [Validators.required, Validators.pattern('^\d{3}\.?\d{3}\.?\d{3}-?\d{2}$')]),
     senha: new FormControl('',
     [Validators.required]),
     sexo: new FormControl('',
@@ -52,8 +52,8 @@ export class UsuarioComponent {
 
     var comprador = new CompradorModel();
     comprador.nome = this.formGroup.controls.nome.value?.toString();
-    // comprador.cpf = this.formGroup.controls.cpf.value?
-    // comprador.dtNasc = this.formGroup.controls.dtNasc.value?.toDate();
+    comprador.cpf = this.formGroup.controls.CPF.value?.toString();
+    comprador.dtNasc = this.formGroup.controls.dtnasc.value?.toString();
     comprador.email = this.formGroup.controls.email.value?.toString();
     comprador.senha = this.formGroup.controls.senha.value?.toString();
     comprador.endereco = this.formGroup.controls.endereco.value?.toString();

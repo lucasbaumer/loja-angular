@@ -2,10 +2,10 @@ export class CompradorModel {
 
   nome?: string;
   email?: string;
-  cpf?: number;
+  cpf?: string;
   senha?: string;
   sexo?: string;
-  dtNasc?: Date;
+  dtNasc?: string;
   endereco?: string;
 
 }

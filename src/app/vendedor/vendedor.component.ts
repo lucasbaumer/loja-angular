@@ -17,7 +17,7 @@ export class VendedorComponent {
     email: new FormControl('',
     [Validators.required]),
     CPF: new FormControl('',
-    [Validators.required,]),
+    [Validators.required, Validators.pattern('^\d{3}\.?\d{3}\.?\d{3}-?\d{2}$')]),
     setor: new FormControl('',
     [Validators.required]),
     senha: new FormControl('',
@@ -50,8 +50,8 @@ export class VendedorComponent {
 
     var vendedor = new VendedorModel();
     vendedor.nome = this.formGroup.controls.nome.value?.toString();
-    // vendedor.cpf = this.formGroup.controls.cpf.value?
-    // vendedor.dtNasc = this.formGroup.controls.dtNasc.value?.toDate();
+    vendedor.cpf = this.formGroup.controls.CPF.value?.toString();
+    vendedor.dtNasc = this.formGroup.controls.dtnasc.value?.toString();
     vendedor.email = this.formGroup.controls.email.value?.toString();
     vendedor.senha = this.formGroup.controls.senha.value?.toString();
     vendedor.setor = this.formGroup.controls.setor.value?.toString();
