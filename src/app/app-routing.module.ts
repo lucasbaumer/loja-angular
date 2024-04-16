@@ -10,13 +10,13 @@ import { VendedorComponent } from './vendedor/vendedor.component';
 import { ListaVendedoresComponent } from './lista-vendedores/lista-vendedores.component';
 import { HomeComponent } from './home/home.component';
 
-
 const routes: Routes = [
        {path: '', redirectTo: 'login', pathMatch: 'full'},
        {path: 'home', component: HomeComponent},
        {path: 'usuario', component: UsuarioComponent},
        {path: 'lista-usuario', component: ListaUsuarioComponent},
        {path: 'produto', component: ProdutoComponent},
+       {path: 'produto/:key', component: ProdutoComponent},
        {path: 'lista-produto', component: ListaProdutoComponent},
        {path: 'vendedor', component: VendedorComponent},
        {path: 'lista-vendedores', component: ListaVendedoresComponent},

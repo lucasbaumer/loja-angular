@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProdutoModel } from './model/produto.model';
 import { ProdutoService } from './service/produto.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-produto',
@@ -10,50 +11,55 @@ import { ProdutoService } from './service/produto.service';
 })
 export class ProdutoComponent {
 
-showSuccessMessages = false;
-showErrorMessages = false;
+  showSuccessMessages = false;
+  showErrorMessages = false;
 
+  key?: string;
   formGroup = new FormGroup({
     nome: new FormControl('',
-    [Validators.required]),
+      [Validators.required]),
     preco: new FormControl('',
-    [Validators.required, Validators.min(5.1),
-    Validators.pattern('^[0-9]+(\.[0-9]{1,2})?$')]),
+      [Validators.required, Validators.min(5.1),
+      Validators.
+        pattern('^[0-9]+(\.[0-9]{1,2})?$')])
   });
 
-  constructor(private produtoService: ProdutoService){ }
+  constructor(private produtoService: ProdutoService,
+    private router: ActivatedRoute
+  ) { }
 
-  ngOninit(): void{ //iniciar alguma coisa antes de iniciar
+  ngOnInit(): void {
+    this.router.paramMap.subscribe(paramMap => {
+      this.key = paramMap.get('key')?.toString();
+      if (this.key) {
+        this.produtoService.carregar(paramMap.get('key')).subscribe(produto => {
+          this.formGroup.controls.nome.patchValue(produto.nome);
+        });
+      }
+    })
   }
 
-  salvar(): void{
-    console.log('Salvando produto');
+  salvar(): void {
+    if (this.formGroup.invalid) {
+      console.log('Formulário inválido');
+      this.formGroup.markAllAsTouched();
+      this.showErrorMessages = true;
+      return;
+    }
 
+    if (this.key) {
+      //codigo para alterar o produto
+    } else {
+      //codigo para salvar o produto
+      var produto = new ProdutoModel();
+      produto.nome = this.formGroup.controls.nome.value?.toString();
+      //produto.preco = this.formGroup.controls.preco?.value;
 
-  console.log("nome: " + this.formGroup.controls.nome.value);
-  console.log("preço: " + this.formGroup.controls.preco.value);
-
-
-  if(this.formGroup.invalid){
-    console.log('Formulário Inválido');
-    this.formGroup.markAllAsTouched();
-    this.showErrorMessages = true;
-    this.showSuccessMessages = false;
-    return;
+      this.produtoService.salvar(produto).then(result => {
+        this.showSuccessMessages = true;
+        console.log(result);
+      });
+    }
   }
 
-  var produto = new ProdutoModel();
-  produto.nome = this.formGroup.controls.nome.value?.toString();
-  produto.preco = this.formGroup.controls.preco.value?.toString();
-
-  this.produtoService.salvar(produto).then(result => {
-    this.showSuccessMessages = true;
-    console.log(result)
-  });
-
-
-  console.log("formulário Válido");
-  this.showSuccessMessages = true;
-  this.showErrorMessages = false;
-}
 }
