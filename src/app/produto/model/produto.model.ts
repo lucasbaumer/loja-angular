@@ -1,6 +1,6 @@
 export class ProdutoModel {
 
-  key?: any;
+  key?:string;
   nome?: string;
   preco?: string;
 

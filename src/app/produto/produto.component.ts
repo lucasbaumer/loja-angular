@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProdutoModel } from './model/produto.model';
 import { ProdutoService } from './service/produto.service';
+import { Router } from 'express';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -34,7 +35,6 @@ export class ProdutoComponent {
       if (this.key) {
         this.produtoService.carregar(paramMap.get('key')).subscribe(produto => {
           this.formGroup.controls.nome.patchValue(produto.nome);
-          this.formGroup.controls.preco.patchValue(produto.preco);
         });
       }
     })
@@ -54,7 +54,7 @@ export class ProdutoComponent {
       //codigo para salvar o produto
       var produto = new ProdutoModel();
       produto.nome = this.formGroup.controls.nome.value?.toString();
-      produto.nome = this.formGroup.controls.preco.value?.toString();
+      produto.preco = this.formGroup.controls.preco.value?.toString();
 
       this.produtoService.salvar(produto).then(result => {
         this.showSuccessMessages = true;
