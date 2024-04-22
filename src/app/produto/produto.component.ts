@@ -35,6 +35,7 @@ export class ProdutoComponent {
       if (this.key) {
         this.produtoService.carregar(paramMap.get('key')).subscribe(produto => {
           this.formGroup.controls.nome.patchValue(produto.nome);
+          this.formGroup.controls.preco.patchValue(produto.preco);
         });
       }
     })
@@ -50,6 +51,15 @@ export class ProdutoComponent {
 
     if (this.key) {
       //codigo para alterar o produto
+      var produto = new ProdutoModel();
+      produto.nome = this.formGroup.controls.nome.value?.toString();
+      produto.preco = this.formGroup.controls.preco.value?.toString();
+
+      this.produtoService.editar( this.key, produto).then(result => {
+        this.showSuccessMessages = true;
+        console.log(result)
+      })
+
     } else {
       //codigo para salvar o produto
       var produto = new ProdutoModel();

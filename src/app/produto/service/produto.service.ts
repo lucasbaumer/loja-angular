@@ -23,6 +23,10 @@ export class ProdutoService {
     return this.db.object('produto/'+key).valueChanges();
   }
 
+  editar(key : any, produto: ProdutoModel, ) {
+    return this.db.object('produto/'+key).update(produto);
+  }
+
   listar() {
     return this.db.list('produto').snapshotChanges()
     .pipe(

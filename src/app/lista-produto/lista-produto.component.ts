@@ -32,7 +32,7 @@ export class ListaProdutoComponent implements OnInit {
   }
 
   carregar(key: any) {
-    this.router.navigate(['/layout/produto/'+key]);
+    this.router.navigate(['/produto/' + key ]);
   }
 
 }
