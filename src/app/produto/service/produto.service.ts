@@ -31,7 +31,8 @@ export class ProdutoService {
     return this.db.list('produto').snapshotChanges()
     .pipe(
       map(changes => {
-        return changes.map(c => ({ key: c.payload.key,
+        console.log(changes);
+        return changes.map(c => ({ key: c.key,
           ...c.payload.val() as ProdutoModel}));
       })
     );

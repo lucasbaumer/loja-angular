@@ -50,7 +50,6 @@ export class ProdutoComponent {
     }
 
     if (this.key) {
-      //codigo para alterar o produto
       var produto = new ProdutoModel();
       produto.nome = this.formGroup.controls.nome.value?.toString();
       produto.preco = this.formGroup.controls.preco.value?.toString();
