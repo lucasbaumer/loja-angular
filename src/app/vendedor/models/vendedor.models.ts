@@ -1,5 +1,6 @@
 export class VendedorModel {
 
+  key?: string;
   nome?: string;
   email?: string;
   cpf?: string;

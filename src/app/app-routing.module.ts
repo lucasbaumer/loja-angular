@@ -20,6 +20,7 @@ const routes: Routes = [
        {path: 'produto/:key', component: ProdutoComponent},
        {path: 'lista-produto', component: ListaProdutoComponent},
        {path: 'vendedor', component: VendedorComponent},
+       {path: 'vendedor/:key', component: VendedorComponent},
        {path: 'lista-vendedores', component: ListaVendedoresComponent},
        {path: 'login', component: LoginComponent},
 ];
