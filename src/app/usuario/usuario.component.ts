@@ -41,9 +41,15 @@ export class UsuarioComponent {
     this.router.paramMap.subscribe(paramMap => {
       this.key = paramMap.get('key')?.toString();
       if (this.key) {
-        this.usuarioService.carregar(paramMap.get('key')).subscribe(comprador => {
+        this.usuarioService.carregar(this.key).subscribe(comprador => {
           this.formGroup.controls.nome.patchValue(comprador.nome);
-          this.formGroup.controls.CPF.patchValue(comprador.Cpf);
+          this.formGroup.controls.CPF.patchValue(comprador.cpf);
+          this.formGroup.controls.email.patchValue(comprador.email);
+          this.formGroup.controls.senha.patchValue(comprador.senha);
+          this.formGroup.controls.sexo.patchValue(comprador.sexo);
+          this.formGroup.controls.dtnasc.patchValue(comprador.dtNasc);
+          this.formGroup.controls.endereco.patchValue(comprador.endereco);
+          console.log(comprador.dtNasc)
         });
       }
     })
@@ -60,8 +66,15 @@ export class UsuarioComponent {
 
     if (this.key) {
       var usuario = new UsuarioModel();
+
       usuario.nome = this.formGroup.controls.nome.value?.toString();
       usuario.cpf = this.formGroup.controls.CPF.value?.toString();
+      usuario.email = this.formGroup.controls.email.value?.toString();
+      usuario.senha = this.formGroup.controls.senha.value?.toString();
+      usuario.sexo = this.formGroup.controls.sexo.value?.toString();
+      usuario.dtNasc = this.formGroup.controls.dtnasc.value?.toString();
+      usuario.endereco = this.formGroup.controls.endereco.value?.toString();
+
 
       this.usuarioService.editar( this.key, usuario).then(result => {
         this.showSuccessMessages = true;
@@ -73,6 +86,12 @@ export class UsuarioComponent {
       var usuario = new UsuarioModel();
       usuario.nome = this.formGroup.controls.nome.value?.toString();
       usuario.cpf = this.formGroup.controls.CPF.value?.toString();
+      usuario.email = this.formGroup.controls.email.value?.toString();
+      usuario.senha = this.formGroup.controls.senha.value?.toString();
+      usuario.sexo = this.formGroup.controls.sexo.value?.toString();
+      usuario.dtNasc = this.formGroup.controls.dtnasc.value?.toString();
+      usuario.endereco = this.formGroup.controls.endereco.value?.toString();
+
 
       this.usuarioService.salvar(usuario).then(result => {
         this.showSuccessMessages = true;

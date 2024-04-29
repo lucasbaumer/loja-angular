@@ -25,7 +25,7 @@ export class UsuarioService {
   }
 
   editar(key : any, usuario: UsuarioModel ) {
-    return this.db.object('usuario/'+key).update(usuario);
+    return this.db.object('usuario/' +key).update(usuario);
   }
 
   listar() {
