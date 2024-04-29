@@ -12,23 +12,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Jorge</td>
-        <td>829.382.939-02</td>
-        <td><button class='btn btn-warning'>Editar</button></td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Cristiano</td>
-        <td>342.753.213-87</td>
-        <td><button class='btn btn-warning'>Editar</button></td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Maria</td>
-        <td>112.621.002-96</td>
-        <td><button class='btn btn-warning'>Editar</button></td>
+      <tr *ngFor="let comprador of compradores;">
+        <th scope="row">{{comprador.key}}</th>
+        <td>{{comprador.nome}}</td>
+        <td>{{comprador.cpf}}</td>
+        <td><button class="btn btn-warning" (click)="carregar(comprador.key)">Editar</button> &nbsp;
+          <button class="btn btn-danger" (click)="excluir(comprador.key)">Excluir</button></td>
       </tr>
     </tbody>
   </table>

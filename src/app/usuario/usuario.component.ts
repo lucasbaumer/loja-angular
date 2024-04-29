@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
-import { CompradorModel } from './model/usuario.model';
+import { UsuarioModel } from './model/usuario.model';
 import { UsuarioService } from './service/usuario.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -10,17 +11,19 @@ import { UsuarioService } from './service/usuario.service';
   styleUrl: './usuario.component.css'
 })
 
-
-
 export class UsuarioComponent {
 
+  showSuccessMessages = false;
+  showErrorMessages = false;
+
+  key?: string;
   formGroup = new FormGroup({
     nome: new FormControl('',
     [Validators.required]),
     email: new FormControl('',
     [Validators.required]),
     CPF: new FormControl('',
-    [Validators.required, Validators.pattern('^\d{3}\.?\d{3}\.?\d{3}-?\d{2}$')]),
+    [Validators.required]),
     senha: new FormControl('',
     [Validators.required]),
     sexo: new FormControl('',
@@ -28,47 +31,55 @@ export class UsuarioComponent {
     endereco: new FormControl('',
     [Validators.required]),
     dtnasc: new FormControl('',
-    [Validators.required, Validators.min(5.1),] ),
+    [Validators.required]),
   })
 
-   constructor(private usuarioService: UsuarioService){ }
+   constructor(private usuarioService: UsuarioService,
+   private router: ActivatedRoute){ }
 
-  ngOninit(): void{ //iniciar alguma coisa antes de iniciar
+   ngOnInit(): void {
+    this.router.paramMap.subscribe(paramMap => {
+      this.key = paramMap.get('key')?.toString();
+      if (this.key) {
+        this.usuarioService.carregar(paramMap.get('key')).subscribe(comprador => {
+          this.formGroup.controls.nome.patchValue(comprador.nome);
+          this.formGroup.controls.CPF.patchValue(comprador.Cpf);
+        });
+      }
+    })
   }
 
-  salvar(): void{
-    console.log('Salvando produto');
-    console.log("nome: " + this.formGroup.controls.nome.value);
-    console.log("nome: " + this.formGroup.controls.nome.touched);
-    console.log("email: " + this.formGroup.controls.email.value);
-    console.log("email: " + this.formGroup.controls.email.touched);
-    console.log("senha: " + this.formGroup.controls.senha.value);
-    console.log("senha: " + this.formGroup.controls.senha.touched);
-    console.log("Sexo: " + this.formGroup.controls.sexo.value);
-    console.log("Data Nascimento: " + this.formGroup.controls.dtnasc.value);
-    console.log("Endereço: " + this.formGroup.controls.endereco.value);
-    console.log("Endereço: " + this.formGroup.controls.endereco.touched);
+  salvar(): void {
+    console.log(this.formGroup.value)
+    if (this.formGroup.invalid) {
+      console.log('Formulário inválido');
+      this.formGroup.markAllAsTouched();
+      this.showErrorMessages = true;
+      return;
+    }
 
+    if (this.key) {
+      var usuario = new UsuarioModel();
+      usuario.nome = this.formGroup.controls.nome.value?.toString();
+      usuario.cpf = this.formGroup.controls.CPF.value?.toString();
 
-    var comprador = new CompradorModel();
-    comprador.nome = this.formGroup.controls.nome.value?.toString();
-    comprador.cpf = this.formGroup.controls.CPF.value?.toString();
-    comprador.dtNasc = this.formGroup.controls.dtnasc.value?.toString();
-    comprador.email = this.formGroup.controls.email.value?.toString();
-    comprador.senha = this.formGroup.controls.senha.value?.toString();
-    comprador.endereco = this.formGroup.controls.endereco.value?.toString();
-    comprador.sexo = this.formGroup.controls.sexo.value?.toString();
+      this.usuarioService.editar( this.key, usuario).then(result => {
+        this.showSuccessMessages = true;
+        console.log(result)
+      })
 
-    this.usuarioService.salvar(comprador).subscribe(usuario => {
-      console.log('Comprador salvo com sucesso');
-      console.log(usuario)
-    }, error => {
-      console.error(error);
-    });
+    } else {
+      //codigo para salvar o produto
+      var usuario = new UsuarioModel();
+      usuario.nome = this.formGroup.controls.nome.value?.toString();
+      usuario.cpf = this.formGroup.controls.CPF.value?.toString();
 
-  if(this.formGroup.invalid){
-    console.log('Formulário Inválido');
-    return;
-  }
+      this.usuarioService.salvar(usuario).then(result => {
+        this.showSuccessMessages = true;
+        console.log(result);
+      });
+    }
   }
 }
+
+

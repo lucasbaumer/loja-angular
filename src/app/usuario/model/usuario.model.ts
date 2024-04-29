@@ -1,5 +1,6 @@
-export class CompradorModel {
+export class UsuarioModel {
 
+  key?: string;
   nome?: string;
   email?: string;
   cpf?: string;
@@ -7,5 +8,4 @@ export class CompradorModel {
   sexo?: string;
   dtNasc?: string;
   endereco?: string;
-
 }

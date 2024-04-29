@@ -1,22 +1,41 @@
 import { Injectable } from '@angular/core';
-import { CompradorModel } from '../model/usuario.model';
+import { UsuarioModel } from '../model/usuario.model';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { UsuarioComponent } from '../usuario.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private db: AngularFireDatabase) { }
 
-  salvar(usuario:CompradorModel):Observable<CompradorModel>{
-    return this.http.
-    post('https://blazetenis-default-rtdb.firebaseio.com/comprador.json', usuario);
+  salvar(usuario: UsuarioModel) {
+    return this.db.list('usuario').push(usuario);
   }
 
-  listar(): Observable<CompradorModel[]> {
-    return this.http.
-    get<CompradorModel[]>('https://blazetenis-default-rtdb.firebaseio.com/comprador.json');
+  excluir(key: any) {
+    return this.db.object('usuario/'+key).remove();
+  }
+
+  carregar(key: any) : Observable<any> {
+    return this.db.object('usuario/'+key).valueChanges();
+  }
+
+  editar(key : any, usuario: UsuarioModel ) {
+    return this.db.object('usuario/'+key).update(usuario);
+  }
+
+  listar() {
+    return this.db.list('usuario').snapshotChanges()
+    .pipe(
+      map(changes => {
+        console.log(changes);
+        return changes.map(c => ({ key: c.key,
+          ...c.payload.val() as UsuarioService}));
+      })
+    );
   }
 }

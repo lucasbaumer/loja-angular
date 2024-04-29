@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { listenerCount } from 'process';
-import { CompradorModel } from '../usuario/model/usuario.model';
+import { UsuarioModel } from '../usuario/model/usuario.model';
 import { UsuarioService } from '../usuario/service/usuario.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista-usuario',
@@ -10,16 +11,26 @@ import { UsuarioService } from '../usuario/service/usuario.service';
 })
 export class ListaUsuarioComponent implements OnInit {
 
-  public compradores: CompradorModel[] = [];
+  public compradores: any;
 
-  constructor(private usuarioService: UsuarioService) { }
+  constructor(private usuarioService: UsuarioService,
+  private router: Router) { }
 
   ngOnInit(): void {
     this.usuarioService.listar().subscribe(compradores => {
+      console.log(compradores)
       this.compradores = compradores;
-      console.log(this.compradores);
-    }, error => {
-      console.error(error);
     });
+  }
+
+  excluir(key: any) {
+    console.log(key);
+    this.usuarioService.excluir(key).then(retorno => {
+      console.log(retorno);
+    });
+  }
+
+  carregar(key: any) {
+    this.router.navigate(['/usuario/' + key ]);
   }
 }
