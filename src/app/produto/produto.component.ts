@@ -4,6 +4,8 @@ import { ProdutoModel } from './model/produto.model';
 import { ProdutoService } from './service/produto.service';
 import { Router } from 'express';
 import { ActivatedRoute } from '@angular/router';
+import { URL } from '@angular/fire/compat/database';
+
 
 @Component({
   selector: 'app-produto',
@@ -22,7 +24,9 @@ export class ProdutoComponent {
     preco: new FormControl('',
       [Validators.required, Validators.min(5.1),
       Validators.
-        pattern('^[0-9]+(\.[0-9]{1,2})?$')])
+        pattern('^[0-9]+(\.[0-9]{1,2})?$')]),
+    imagem: new FormControl('',
+      [Validators.required]),
   });
 
   constructor(private produtoService: ProdutoService,
@@ -36,6 +40,7 @@ export class ProdutoComponent {
         this.produtoService.carregar(paramMap.get('key')).subscribe(produto => {
           this.formGroup.controls.nome.patchValue(produto.nome);
           this.formGroup.controls.preco.patchValue(produto.preco);
+          this.formGroup.controls.imagem.patchValue(produto.imagem);
         });
       }
     })
@@ -53,6 +58,7 @@ export class ProdutoComponent {
       var produto = new ProdutoModel();
       produto.nome = this.formGroup.controls.nome.value?.toString();
       produto.preco = this.formGroup.controls.preco.value?.toString();
+      produto.imagem = this.formGroup.controls.imagem.value?.toString();
 
       this.produtoService.editar( this.key, produto).then(result => {
         this.showSuccessMessages = true;
@@ -64,12 +70,28 @@ export class ProdutoComponent {
       var produto = new ProdutoModel();
       produto.nome = this.formGroup.controls.nome.value?.toString();
       produto.preco = this.formGroup.controls.preco.value?.toString();
+      produto.imagem = this.formGroup.controls.imagem.value?.toString();
 
       this.produtoService.salvar(produto).then(result => {
         this.showSuccessMessages = true;
         console.log(result);
       });
     }
+  }
+
+  selectFile(event: any){
+    console.log(event);
+
+    console.log(event.target.files[0]);
+
+    const file = event.target.files[0];
+
+    this.produtoService.uploadImagem(file).then(result => {
+      console.log(result);
+      result.ref.getDownloadURL().then(url => {
+        this.formGroup.controls.imagem.patchValue(result.ref.fullPath);
+      });
+    })
   }
 
 }

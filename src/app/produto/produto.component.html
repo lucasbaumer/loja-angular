@@ -28,6 +28,17 @@
     formControlName="preco">
     </div>
 
+    <div class="mb-3">
+    <label for="imagem" class="fomr-label">Imagem: </label>
+    <input type="text" class="form-control" id="imagem" placeholder="Url da imagem"
+    formControlName="imagem">
+    </div>
+
+    <div class="mb-3">
+    <label for="upload" class="fomr-label">Upload: </label>
+    <input type="file" class="form-control" id="upload" (change)="selectFile($event)">
+    </div>
+
     <button class="btn btn-primary" (click)="salvar()">Salvar</button>
 
     </form>
