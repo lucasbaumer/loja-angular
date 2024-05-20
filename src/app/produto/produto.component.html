@@ -5,7 +5,6 @@
     Produto cadastrado com sucesso!
     </div>
 
-
     <div *ngIf="showErrorMessages && !showSuccessMessages" id="alert-div" class="alert alert-danger" role="alert">
     Erro ao salvar o produto!
     </div>
@@ -26,6 +25,12 @@
     <label for="preco">Preço: </label>
     <input type="text" class="form-control" id="preco" placeholder="0.00"
     formControlName="preco">
+    </div>
+
+    <div class="mb-3">
+      <label for="descricao">Descrição: </label>
+      <input type="text" class="form-control" id="descricao" placeholder="Descreva um pouco mais sobre seu produto"
+      formControlName="descricao">
     </div>
 
     <div class="mb-3">

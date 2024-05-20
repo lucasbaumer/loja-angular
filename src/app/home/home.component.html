@@ -43,7 +43,11 @@
 <br>
 <br>
 <div class="container">
-  <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+<hr>
+<br>
+<h1>Veja qual modelo combina mais com voçê!</h1>
+<br>
+<div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
     <div class="col">
       <div class="card h-100">
         <img src="{{this.dunk}}" class="card-img-top" alt="...">
@@ -88,6 +92,22 @@
         </div>
       </div>
     </div>
-  </div>
+</div>
+<br>
+<hr>
+<h1> Confira alguns dos nossos produtos no estoque:</h1>
+<br>
+
+<div class="row">
+  <div *ngFor="let produto of produtos;"  class="col-sm-4 mb-4">
+      <div class="card h-100">
+          <img src="{{produto.imagem}}" class="card-img-top" alt="...">
+          <div class="card-body">
+              <h5 class="card-title">{{produto.nome}}</h5>
+              <p class="card-text">{{produto.descricao}}</p>
+              <p class="card-text">R${{produto.preco}}</p>
+              <a href="#" class="btn btn-primary">Ver mais</a>
+          </div>
+      </div>
 </div>
 

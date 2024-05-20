@@ -8,6 +8,7 @@
         <th scope="col">Código</th>
         <th scope="col">Nome</th>
         <th scope="col">Valor</th>
+        <th scope="col">Descrição</th>
         <th scope="col">Imagem</th>
         <th scope="col">Editar</th>
       </tr>
@@ -17,6 +18,7 @@
         <th scope="row">{{produto.key}}</th>
         <td>{{produto.nome}}</td>
         <td>{{produto.preco}}</td>
+        <td>{{produto.descricao}}</td>
         <td><img src="{{produto.imagem}}" width="30%" ></td>
         <td><button class="btn btn-warning" (click)="carregar(produto.key)">Editar</button> &nbsp;
           <button class="btn btn-danger" (click)="excluir(produto.key)">Excluir</button></td>

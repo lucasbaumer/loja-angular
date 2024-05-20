@@ -25,6 +25,8 @@ export class ProdutoComponent {
       [Validators.required, Validators.min(5.1),
       Validators.
         pattern('^[0-9]+(\.[0-9]{1,2})?$')]),
+    descricao: new FormControl('',
+      [Validators.required]),
     imagem: new FormControl('',
       [Validators.required]),
   });
@@ -40,6 +42,7 @@ export class ProdutoComponent {
         this.produtoService.carregar(paramMap.get('key')).subscribe(produto => {
           this.formGroup.controls.nome.patchValue(produto.nome);
           this.formGroup.controls.preco.patchValue(produto.preco);
+          this.formGroup.controls.descricao.patchValue(produto.descricao);
           this.formGroup.controls.imagem.patchValue(produto.imagem);
         });
       }
@@ -58,6 +61,7 @@ export class ProdutoComponent {
       var produto = new ProdutoModel();
       produto.nome = this.formGroup.controls.nome.value?.toString();
       produto.preco = this.formGroup.controls.preco.value?.toString();
+      produto.descricao = this.formGroup.controls.descricao.value?.toString();
       produto.imagem = this.formGroup.controls.imagem.value?.toString();
 
       this.produtoService.editar( this.key, produto).then(result => {
@@ -70,6 +74,7 @@ export class ProdutoComponent {
       var produto = new ProdutoModel();
       produto.nome = this.formGroup.controls.nome.value?.toString();
       produto.preco = this.formGroup.controls.preco.value?.toString();
+      produto.descricao = this.formGroup.controls.descricao.value?.toString();
       produto.imagem = this.formGroup.controls.imagem.value?.toString();
 
       this.produtoService.salvar(produto).then(result => {
