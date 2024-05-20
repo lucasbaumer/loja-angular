@@ -9,3 +9,8 @@
 #dropdown {
   font-weight: 600;
 }
+
+a{
+  font-weight: bold;
+  font-style: italic;
+}
