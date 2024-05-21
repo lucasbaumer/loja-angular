@@ -31,7 +31,7 @@ import { AngularFireStorageModule} from '@angular/fire/compat/storage';
     ListaProdutoComponent,
     VendedorComponent,
     ListaVendedoresComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +41,7 @@ import { AngularFireStorageModule} from '@angular/fire/compat/storage';
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
   ],
   providers: [
     provideClientHydration()

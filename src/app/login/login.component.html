@@ -9,18 +9,19 @@
               <div class="card-body">
                   <form action="#">
                     <div class="form-outline mb-4">
-                      <input type="email" id="form2Example1" class="form-control" />
+                      <input type="email" id="form2Example1" class="form-control" [formControl]="login"/>
                       <label class="form-label" for="form2Example1">Email</label>
                     </div>
                     <div class="form-outline mb-4">
-                      <input type="password" id="form2Example2" class="form-control" />
+                      <input type="password" id="form2Example2" class="form-control" [formControl]="password" />
                       <label class="form-label" for="form2Example2">Senha</label>
                     </div>
                     <div class="col" style="text-align: right;">
-                      <a href="#!">Esqueceu sua Senha?</a>
+                      <a href="#" (click)="recuperarSenha()">Esqueceu sua Senha?</a>
                     </div>
                     <br>
-                      <button type="button" class="btn btn-primary btn-block mb-4" [routerLink]="'/home'">Entrar</button>
+                      <button type="button" class="btn btn-primary btn-block mb-4" (click)="realizarLogin()">Entrar</button><br><br>
+                      <button type="button" class="btn btn-primary btn-block mb-4" (click)="excluirConta()">EXCLUIR SUA CONTA!</button>
                   </form>
               </div>
           </div>
