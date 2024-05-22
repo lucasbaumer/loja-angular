@@ -4,16 +4,23 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { UsuarioComponent } from '../usuario.component';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
 
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private router: Router , private db: AngularFireDatabase) { }
 
-  salvar(usuario: UsuarioModel) {
-    return this.db.list('usuario').push(usuario);
+  salvar(usuario: UsuarioModel): Promise<void> {
+    return this.db.list('usuario').push(usuario)
+    .then(() => {
+      console.log('Usuário salvo com sucesso!');
+      this.router.navigate(['/lista-usuario']);
+    }).catch(error => {
+      console.log('Erro ao salvar usuario', error);
+    })
   }
 
   excluir(key: any) {
@@ -24,8 +31,8 @@ export class UsuarioService {
     return this.db.object('usuario/'+key).valueChanges();
   }
 
-  editar(key : any, usuario: UsuarioModel ) {
-    return this.db.object('usuario/' +key).update(usuario);
+  editar(key : any, usuario: UsuarioModel ){
+    return this.db.object('usuario/' +key).update(usuario)
   }
 
   listar() {

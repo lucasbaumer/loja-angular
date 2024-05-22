@@ -3,16 +3,23 @@ import { VendedorModel } from '../models/vendedor.models';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class VendedorService {
 
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private db: AngularFireDatabase, private router: Router) { }
 
-  salvar(vendedor: VendedorModel) {
-    return this.db.list('vendedor').push(vendedor);
+  salvar(vendedor: VendedorModel): Promise<void> {
+    return this.db.list('vendedor').push(vendedor)
+    .then(() => {
+      console.log('Usuário salvo com sucesso!');
+      this.router.navigate(['/lista-vendedores']);
+    }).catch(error => {
+      console.log('Erro ao salvar usuario', error);
+    })
   }
 
   excluir(key: any) {

@@ -3,6 +3,7 @@ import { ProdutoModel } from '../model/produto.model';
 import { Observable, map } from 'rxjs';
 import {AngularFireAction, AngularFireDatabase} from '@angular/fire/compat/database';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +11,16 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 
 export class ProdutoService {
 
-  constructor(private db: AngularFireDatabase, private storage: AngularFireStorage) { }
+  constructor(private db: AngularFireDatabase, private storage: AngularFireStorage, private router: Router) { }
 
-  salvar(produto: ProdutoModel) {
-    return this.db.list('produto').push(produto);
+  salvar(produto: ProdutoModel): Promise<void> {
+    return this.db.list('produto').push(produto)
+    .then(() => {
+      console.log('produto salvo com sucesso!');
+      this.router.navigate(['/lista-produto']);
+    }).catch(error => {
+      console.log('Erro ao salvar produto', error);
+    })
   }
 
   excluir(key: any) {

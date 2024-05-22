@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UsuarioModel } from './model/usuario.model';
 import { UsuarioService } from './service/usuario.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { Router } from 'express';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './usuario.component.css'
 })
 
-export class UsuarioComponent {
+export class UsuarioComponent implements OnInit{
 
   showSuccessMessages = false;
   showErrorMessages = false;
@@ -78,7 +79,8 @@ export class UsuarioComponent {
 
       this.usuarioService.editar( this.key, usuario).then(result => {
         this.showSuccessMessages = true;
-        console.log(result)
+        console.log(result);
+
       })
 
     } else {
