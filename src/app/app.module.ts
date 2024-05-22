@@ -19,6 +19,8 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from '../environment/environment';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireStorageModule} from '@angular/fire/compat/storage';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { AngularFireStorageModule} from '@angular/fire/compat/storage';
     VendedorComponent,
     ListaVendedoresComponent,
     HomeComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +45,7 @@ import { AngularFireStorageModule} from '@angular/fire/compat/storage';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireStorageModule,
+    AngularFireAuthModule
   ],
   providers: [
     provideClientHydration()

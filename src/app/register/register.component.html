@@ -4,25 +4,23 @@
       <div class="col-md-6">
           <div class="card border-0">
               <div class="card-header-no-bg">
-                <h4 class="card-title">Faça Seu Login</h4>
+                <h4 class="card-title">Faça seu Cadastro:</h4>
               </div>
               <div class="card-body">
-                  <form action="#">
+                  <form action="#" [formGroup]="registerForm">
                     <div class="form-outline mb-4">
-                      <input type="email" id="form2Example1" class="form-control" [formControl]="login"/>
+                      <input type="email" id="form2Example1" class="form-control" name="email" formControlName="email"/>
                       <label class="form-label" for="form2Example1">Email</label>
                     </div>
                     <div class="form-outline mb-4">
-                      <input type="password" id="form2Example2" class="form-control" [formControl]="password" />
+                      <input type="password" id="form2Example2" class="form-control" name="password" formControlName="password"/>
                       <label class="form-label" for="form2Example2">Senha</label>
                     </div>
                     <div class="col" style="text-align: right;">
-                      <a href="#" (click)="recuperarSenha()">Esqueceu sua Senha?</a><br>
-                      <a href="/register">Criar nova Conta!</a>
+                      <a href="/login">Tem uma conta?</a>
                     </div>
                     <br>
-                      <button type="button" class="btn btn-primary btn-block mb-4" (click)="realizarLogin()">Entrar</button><br><br>
-                      <button type="button" class="btn btn-primary btn-block mb-4" (click)="excluirConta()">EXCLUIR SUA CONTA!</button>
+                      <button type="button" class="btn btn-primary btn-block mb-4" (click)="register()">Cadastrar</button><br><br>
                   </form>
               </div>
           </div>
