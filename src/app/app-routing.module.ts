@@ -10,6 +10,8 @@ import { VendedorComponent } from './vendedor/vendedor.component';
 import { ListaVendedoresComponent } from './lista-vendedores/lista-vendedores.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
 
 const routes: Routes = [
        {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -25,6 +27,8 @@ const routes: Routes = [
        {path: 'lista-vendedores', component: ListaVendedoresComponent},
        {path: 'login', component: LoginComponent},
        {path: 'register', component: RegisterComponent},
+       {path: 'forgotPassword', component: ForgotPasswordComponent},
+       {path: 'verify', component: VerifyEmailComponent},
 ];
 
 

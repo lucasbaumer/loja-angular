@@ -12,50 +12,30 @@ export class LoginComponent {
   showSuccessMessages = false;
   showErrorMessages = false;
 
-  login = new FormControl('',
-    [Validators.required]);
-
-  password = new FormControl('',
-    [Validators.required]);
+  email: string = '';
+  password : string = '';
 
   constructor(private router: Router,
     public afAuth: AngularFireAuth,) {}
 
   realizarLogin(){
-    console.log('Login: ' + this.login.value);
-    console.log('Senha: ' + this.password.value);
+    console.log('email: ' + this.email);
+    console.log('Senha: ' + this.password);
 
-    if(this.login.value == ''){
+    if(this.email == ''){
       alert('Insira seu Email, por favor!');
       return;
     }
-    if(this.password.value == ''){
+    if(this.password == ''){
       alert('Insira sua Senha, por favor!');
       return;
     }
 
     this.afAuth
-      .signInWithEmailAndPassword(this.login.value!, this.password.value!)
-      .then((result) => {
-        console.log(result.user);
+      .signInWithEmailAndPassword(this.email, this.password);
+        this.email = '';
+        this.password = '';
         this.router.navigate(['/home']);
-      })
-      .catch((error) =>{
-        console.log(error);
-        window.alert('Email ou senha incorretos!!')
-        return;
-      });
-  }
-
-  recuperarSenha(){
-    this.afAuth
-      .sendPasswordResetEmail(this.login.value!)
-      .then(()=>{
-        window.alert('Email para alterar sua senha foi enviado, confira sua caixa de entrada.');
-      })
-    .catch((error)=> {
-      window.alert(error);
-    });
   }
 
   excluirConta(){

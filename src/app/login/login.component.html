@@ -9,15 +9,15 @@
               <div class="card-body">
                   <form action="#">
                     <div class="form-outline mb-4">
-                      <input type="email" id="form2Example1" class="form-control" [formControl]="login"/>
+                      <input type="email" id="form2Example1" class="form-control" name="email" [(ngModel)]="email" />
                       <label class="form-label" for="form2Example1">Email</label>
                     </div>
                     <div class="form-outline mb-4">
-                      <input type="password" id="form2Example2" class="form-control" [formControl]="password" />
+                      <input type="password" id="form2Example2" class="form-control" name="password" [(ngModel)]="password"/>
                       <label class="form-label" for="form2Example2">Senha</label>
                     </div>
                     <div class="col" style="text-align: right;">
-                      <a href="#" (click)="recuperarSenha()">Esqueceu sua Senha?</a><br>
+                      <a href="/forgotPassword">Esqueceu sua Senha?</a><br>
                       <a href="/register">Criar nova Conta!</a>
                     </div>
                     <br>
