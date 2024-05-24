@@ -25,6 +25,15 @@ export class LoginComponent {
     console.log('Login: ' + this.login.value);
     console.log('Senha: ' + this.password.value);
 
+    if(this.login.value == ''){
+      alert('Insira seu Email, por favor!');
+      return;
+    }
+    if(this.password.value == ''){
+      alert('Insira sua Senha, por favor!');
+      return;
+    }
+
     this.afAuth
       .signInWithEmailAndPassword(this.login.value!, this.password.value!)
       .then((result) => {
