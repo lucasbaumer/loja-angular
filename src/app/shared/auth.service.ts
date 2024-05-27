@@ -52,12 +52,4 @@ export class AuthService {
     })
   }
 
-  //verificação de email
-  sendEmailForVerification(user: any){
-    user.sendEmailVerification().then((res: any) =>{
-      this.router.navigate(['/verify']);
-      },(err: any) => {
-        alert('Algo deu errado, não foi possível mandar o link')
-      })
-  }
 }
