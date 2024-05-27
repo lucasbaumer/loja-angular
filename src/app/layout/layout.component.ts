@@ -15,7 +15,9 @@ export class LayoutComponent implements OnInit{
     }
 
 
-  excluirConta(){
+  excluirConta(): void{
+    const confirmar = window.confirm("ATENÇÃO!!! deseja excluir a conta?");
+    if (confirmar){
     this.afAuth.currentUser?.then((user) => {
       user?.delete().then(() => {
         window.alert('Conta excluida com sucesso');
@@ -24,6 +26,9 @@ export class LayoutComponent implements OnInit{
         window.alert(error);
       });
     });
+    }else{
+      window.alert("Exclusão cancelada!")
+    }
   }
 
     logout(){
