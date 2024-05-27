@@ -7,3 +7,8 @@
   font-weight: bold;
   font-style: italic;
 }
+
+p{
+  font-size: small;
+  color: red;
+}
