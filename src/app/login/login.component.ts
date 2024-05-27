@@ -18,7 +18,7 @@ export class LoginComponent {
   constructor(private router: Router,
     public afAuth: AngularFireAuth,) {}
 
-  realizarLogin(){
+  realizarLogin(email : string, password: string){
     console.log('email: ' + this.email);
     console.log('Senha: ' + this.password);
 
@@ -31,11 +31,14 @@ export class LoginComponent {
       return;
     }
 
-    this.afAuth
-      .signInWithEmailAndPassword(this.email, this.password);
-        this.email = '';
-        this.password = '';
-        this.router.navigate(['/home']);
+    this.afAuth.signInWithEmailAndPassword(email, password).then(() => {
+      localStorage.setItem('token', 'true');
+      this.router.navigate(['/home'])
+
+    },err =>{
+      alert('Algo deu errado, tente novamente!');
+      this.router.navigate(['/login'])
+    })
   }
 
   excluirConta(){
@@ -48,3 +51,4 @@ export class LoginComponent {
     });
   }
 }
+
