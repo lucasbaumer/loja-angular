@@ -46,11 +46,21 @@
                             <label for="size-44">44</label>
                         </div>
                     </div>
-                      <a class="buy-button">COMPRAR</a>
+                    <div class="payment-options">
+                      <label for="payment">Forma de Pagamento:</label>
+                      <select id="payment" name="payment">
+                          <option value="pix">PIX</option>
+                          <option value="boleto">Boleto</option>
+                          <option value="credit-card">Cartão de Crédito</option>
+                      </select>
+                  </div>
+                      <a class="buy-button" onclick="window.alert('Compra efetuada com sucesso!!')" href="/home">COMPRAR</a>
                       <div class="free-shipping">FRETE GRÁTIS</div>
+                      <a href="/home">voltar para a loja</a>
                   </div>
             </div>
         </div>
     </div>
+
 </body>
 </html>
