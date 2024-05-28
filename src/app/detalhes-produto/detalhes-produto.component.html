@@ -1,11 +1,31 @@
-<div class="row">
-  <div *ngIf="produto"  class="col-sm-4 mb-4">
-      <div class="card h-100">
-        <img src="{{produto.imagem}}" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h2> nome: {{produto.nome}}</h2>
-            <p>Preço: {{ produto.preco}}</p>
-            <p> descrição: {{ produto.descricao }}</p>
-          </div>
-      </div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<app-layout></app-layout>
+<body>
+    <div class="container">
+      <div *ngIf="produto">
+        <div class="product">
+            <img src="{{produto.imagem}}">
+            <div class="product-details">
+                      <h2>{{produto.nome}}</h2>
+                      <div class="ratings">
+                        <div class="stars">
+                            ★★★★★
+                        </div>
+                        <div class="reviews">(12)</div>
+                      </div>
+                      <p class="price">R$:{{ produto.preco}}</p>
+                      <p>{{ produto.descricao }}</p>
+                      <a href="#" class="buy-button">COMPRAR</a>
+                      <div class="free-shipping">FRETE GRÁTIS</div>
+                  </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
