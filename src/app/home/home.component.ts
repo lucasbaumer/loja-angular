@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { ProdutoService } from '../produto/service/produto.service';
+import { Router } from '@angular/router';
+import { ProdutoComponent } from '../produto/produto.component';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -19,13 +23,25 @@ export class HomeComponent {
   airjordan = "https://static.nike.com/a/images/f_auto/dpr_1.4,cs_srgb/w_1387,c_limit/2d16fd38-f931-4ea7-8e9f-e39322c50186/nike-just-do-it.jpg"
   airmax = "https://static.nike.com/a/images/f_auto/dpr_1.4,cs_srgb/w_1387,c_limit/56fefa26-61c9-49da-b2b4-18d0a9add9f9/nike-just-do-it.png"
 
-  constructor(private produtoService: ProdutoService,){}
+  constructor(private produtoService: ProdutoService, public router: Router, private db: AngularFireDatabase){}
+  key?: any;
 
   ngOnInit(): void{
     this.produtoService.listar().subscribe(produtos => {
       console.log(produtos)
       this.produtos = produtos;
-    })
+    });
+
+
+    this.produtoService.listar().subscribe(data => {
+      this.produtos = data;
+    });
+  }
+
+  verDetalhes(key: any | null){
+    if(key){
+      this.router.navigate(['/detalhes', key]);
+    }
   }
 
 }

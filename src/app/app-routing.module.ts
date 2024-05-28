@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { DetalhesProdutoComponent } from './detalhes-produto/detalhes-produto.component';
 
 const routes: Routes = [
        {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -21,6 +22,7 @@ const routes: Routes = [
        {path: 'lista-usuario', component: ListaUsuarioComponent},
        {path: 'produto', component: ProdutoComponent},
        {path: 'produto/:key', component: ProdutoComponent},
+       {path: 'detalhes/:key', component: DetalhesProdutoComponent},
        {path: 'lista-produto', component: ListaProdutoComponent},
        {path: 'vendedor', component: VendedorComponent},
        {path: 'vendedor/:key', component: VendedorComponent},
@@ -29,6 +31,7 @@ const routes: Routes = [
        {path: 'register', component: RegisterComponent},
        {path: 'forgotPassword', component: ForgotPasswordComponent},
        {path: 'verify', component: VerifyEmailComponent},
+       {path: 'detalhes', component: DetalhesProdutoComponent},
 ];
 
 

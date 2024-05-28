@@ -22,7 +22,9 @@ export class ListaProdutoComponent implements OnInit {
       console.log(produtos)
       this.produtos = produtos;
     });
+
   }
+
 
   excluir(key: any) {
     console.log(key);

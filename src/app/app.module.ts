@@ -23,6 +23,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { RegisterComponent } from './register/register.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { DetalhesProdutoComponent } from './detalhes-produto/detalhes-produto.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { VerifyEmailComponent } from './verify-email/verify-email.component';
     RegisterComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
+    DetalhesProdutoComponent,
   ],
   imports: [
     BrowserModule,

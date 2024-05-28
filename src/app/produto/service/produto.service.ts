@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 
+
 export class ProdutoService {
 
   constructor(private db: AngularFireDatabase, private storage: AngularFireStorage, private router: Router) { }
@@ -31,6 +32,7 @@ export class ProdutoService {
     return this.db.object('produto/'+key).valueChanges();
   }
 
+
   editar(key : any, produto: ProdutoModel, ) {
     return this.db.object('produto/'+key).update(produto);
   }
@@ -44,6 +46,19 @@ export class ProdutoService {
           ...c.payload.val() as ProdutoModel}));
       })
     );
+  }
+
+  getProdutoById(key: any): Observable<ProdutoModel>{
+    return this.db.object(`produto/${key}`).snapshotChanges()
+    .pipe(
+      map(c => {
+        const data = c.payload.val() as ProdutoModel;
+        return {
+          key: c.key,
+          ...data
+        };
+      })
+    )
   }
 
   uploadImagem(file: any){

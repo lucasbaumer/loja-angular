@@ -106,7 +106,7 @@
               <h5 class="card-title">{{produto.nome}}</h5>
               <p class="card-text">{{produto.descricao}}</p>
               <p class="card-text">R${{produto.preco}}</p>
-              <a href="#" class="btn btn-primary">Ver mais</a>
+              <a class="btn btn-primary" (click)="verDetalhes(produto.key)">Ver mais</a>
           </div>
       </div>
 </div>
